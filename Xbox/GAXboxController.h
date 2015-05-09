@@ -21,10 +21,14 @@
 
 @property (weak, nonatomic) id<GAXboxControllerDelegate> delegate;
 
+- (instancetype)initWithControllerIndex:(int)index queue:(NSOperationQueue *)queue;
+
 - (void)connect;
 - (void)disconnect;
 - (void)startPolling;
 - (void)stopPolling;
+
+- (NSString *)usbSerialNumber;
 
 - (BOOL)DPadUp;
 - (BOOL)DPadDown;

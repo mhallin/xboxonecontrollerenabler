@@ -19,6 +19,11 @@
 
 @property (weak, nonatomic) id<GAXboxControllerCommunicationDelegate> delegate;
 
++ (int)numberOfConnectedControllers;
+
+- (instancetype)initWithControllerIndex:(int)index queue:(NSOperationQueue *)queue;
+- (NSString *)usbSerialNumber;
+
 - (int)searchForDevices;
 - (int)openDevice;
 - (int)configureInterfaceParameters;

@@ -25,12 +25,12 @@
 
 #pragma mark - Object Life Cycle
 
-- (id)init {
+- (id)initWithControllerIndex:(int)index queue:(NSOperationQueue *)queue {
   self = [super init];
   
   _analogTriggers = YES;
   
-  communication = [[GAXboxControllerCommunication alloc] init];
+  communication = [[GAXboxControllerCommunication alloc] initWithControllerIndex:index queue:queue];
   [communication setDelegate:self];
   
   _leftAnalogXOffset = 0;
@@ -76,6 +76,12 @@
 
 - (void)stopPolling {
   [communication stopPollingController];
+}
+
+#pragma mark - Properties
+
+- (NSString *)usbSerialNumber {
+  return communication.usbSerialNumber;
 }
 
 #pragma mark - Xbox Controller Communication Delegate Method

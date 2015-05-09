@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GAXboxControllerViewController">
+            <connections>
+                <outlet property="_calibrationButton" destination="Zfi-JB-fNV" id="i5T-cw-HV5"/>
+                <outlet property="_connectButton" destination="3t2-gI-WH6" id="PSz-ra-dLQ"/>
+                <outlet property="_progressLeftAnalogX" destination="azj-9J-uRK" id="e5J-TK-DJW"/>
+                <outlet property="_progressLeftAnalogY" destination="SIN-wY-4Dy" id="ST7-ih-KUI"/>
+                <outlet property="_progressLeftTrigger" destination="MDm-AA-dM4" id="RD4-T4-F96"/>
+                <outlet property="_progressRightAnalogX" destination="hQA-GC-jcq" id="VIb-US-Te7"/>
+                <outlet property="_progressRightAnalogY" destination="G9W-1Y-lrK" id="RdZ-FY-b8P"/>
+                <outlet property="_progressRightTrigger" destination="Fyg-BR-GJA" id="dI2-UV-ptc"/>
+                <outlet property="_radioA" destination="ajq-yk-eqD" id="3Pq-dW-hag"/>
+                <outlet property="_radioB" destination="geO-jA-6gT" id="eZR-xQ-Xxk"/>
+                <outlet property="_radioDown" destination="kYC-lc-9KQ" id="UM6-tM-MS7"/>
+                <outlet property="_radioLeft" destination="n0W-ja-7QP" id="rZ0-BQ-3hN"/>
+                <outlet property="_radioLeftAnalogButton" destination="15U-sc-wJh" id="RGi-7d-0sA"/>
+                <outlet property="_radioLeftBumper" destination="Sju-ul-8zO" id="FHq-Ur-3NX"/>
+                <outlet property="_radioMatrix" destination="fUZ-Sb-Kwz" id="qxR-mn-VCe"/>
+                <outlet property="_radioMenu" destination="7GE-RG-L4C" id="5da-gb-8Ry"/>
+                <outlet property="_radioRight" destination="GzU-DI-6Cc" id="MQZ-zk-vgv"/>
+                <outlet property="_radioRightAnalogButton" destination="Meq-nd-3Mo" id="2Cs-AP-Oif"/>
+                <outlet property="_radioRightBumper" destination="aUY-TQ-8An" id="Hd6-kF-4CF"/>
+                <outlet property="_radioUp" destination="4we-PE-vzA" id="EDH-3Q-rEV"/>
+                <outlet property="_radioView" destination="Rcr-Sj-sfR" id="GaK-uu-dFp"/>
+                <outlet property="_radioX" destination="wJf-De-0cj" id="zsU-Sz-aeG"/>
+                <outlet property="_radioY" destination="Y3h-Fk-4P7" id="Snc-1Z-Tha"/>
+                <outlet property="_resetButton" destination="DJP-qe-TCy" id="m24-Se-9Eu"/>
+                <outlet property="_statusLabel" destination="ek0-fT-tQ4" id="k2N-rh-7PY"/>
+                <outlet property="_triggerButton" destination="5ps-KI-aIc" id="lDO-Br-wQ5"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="210"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" fixedFrame="YES" title="Settings" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="vnF-4g-VzF">
+                    <rect key="frame" x="3" y="41" width="143" height="170"/>
+                    <view key="contentView">
+                        <rect key="frame" x="1" y="1" width="141" height="168"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ps-KI-aIc">
+                                <rect key="frame" x="16" y="80" width="109" height="24"/>
+                                <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="p0W-z2-dt0">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Analog" width="52" selected="YES"/>
+                                        <segment label="Digital" width="50" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="triggerMode:" target="-2" id="LHV-4x-4we"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-kr-xDF">
+                                <rect key="frame" x="25" y="111" width="90" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Trigger mode" id="OL2-PB-VaL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3t2-gI-WH6">
+                                <rect key="frame" x="12" y="130" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B5I-ZG-5Qb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleConnection:" target="-2" id="uOM-Hq-eeM"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfi-JB-fNV">
+                                <rect key="frame" x="12" y="40" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Calibrate" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TBs-2F-thI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startCalibration:" target="-2" id="4lT-15-Hcm"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJP-qe-TCy">
+                                <rect key="frame" x="12" y="7" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zym-tb-Qp8">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetCalibration:" target="-2" id="0Qy-yQ-pJO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <box fixedFrame="YES" title="Buttons" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-sJ-HBG">
+                    <rect key="frame" x="148" y="41" width="341" height="170"/>
+                    <view key="contentView">
+                        <rect key="frame" x="1" y="1" width="339" height="168"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressIndicator fixedFrame="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="MDm-AA-dM4">
+                                <rect key="frame" x="216" y="139" width="105" height="20"/>
+                            </progressIndicator>
+                            <matrix verticalHuggingPriority="750" fixedFrame="YES" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUZ-Sb-Kwz">
+                                <rect key="frame" x="18" y="17" width="180" height="138"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="84" height="18"/>
+                                <size key="intercellSpacing" width="4" height="2"/>
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="UX2-aO-rCX">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="radio" title="D-Up" imagePosition="left" alignment="left" continuous="YES" tag="1" inset="2" id="4we-PE-vzA">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="D-Down" imagePosition="left" alignment="left" continuous="YES" inset="2" id="kYC-lc-9KQ">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="D-Left" imagePosition="left" alignment="left" continuous="YES" inset="2" id="n0W-ja-7QP">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="D-Right" imagePosition="left" alignment="left" continuous="YES" inset="2" id="GzU-DI-6Cc">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="View" imagePosition="left" alignment="left" continuous="YES" inset="2" id="Rcr-Sj-sfR">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="L Bumper" imagePosition="left" alignment="left" continuous="YES" inset="2" id="Sju-ul-8zO">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="L Stick" imagePosition="left" alignment="left" continuous="YES" inset="2" id="15U-sc-wJh">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </column>
+                                    <column>
+                                        <buttonCell type="radio" title="A" imagePosition="left" alignment="left" continuous="YES" inset="2" id="ajq-yk-eqD">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="B" imagePosition="left" alignment="left" continuous="YES" inset="2" id="geO-jA-6gT">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="X" imagePosition="left" alignment="left" continuous="YES" inset="2" id="wJf-De-0cj">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="Y" imagePosition="left" alignment="left" continuous="YES" inset="2" id="Y3h-Fk-4P7">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="Menu" imagePosition="left" alignment="left" continuous="YES" inset="2" id="7GE-RG-L4C">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="R Bumper" imagePosition="left" alignment="left" continuous="YES" inset="2" id="aUY-TQ-8An">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="R Stick" imagePosition="left" alignment="left" continuous="YES" inset="2" id="Meq-nd-3Mo">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                            </matrix>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyv-Un-7mK">
+                                <rect key="frame" x="191" y="141" width="19" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="LT" id="nLz-z1-3OK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator fixedFrame="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Fyg-BR-GJA">
+                                <rect key="frame" x="216" y="114" width="105" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msW-VC-YSD">
+                                <rect key="frame" x="191" y="116" width="21" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="RT" id="pv0-gG-Br2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator fixedFrame="YES" minValue="-1" maxValue="1" doubleValue="-1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="azj-9J-uRK">
+                                <rect key="frame" x="216" y="88" width="105" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVN-tE-DYa">
+                                <rect key="frame" x="191" y="90" width="20" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="LX" id="fva-dE-Ode">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator fixedFrame="YES" minValue="-1" maxValue="1" doubleValue="-1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="SIN-wY-4Dy">
+                                <rect key="frame" x="216" y="63" width="105" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0XY-kB-DcW">
+                                <rect key="frame" x="191" y="65" width="19" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="LY" id="3jK-FJ-ZKv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator fixedFrame="YES" minValue="-1" maxValue="1" doubleValue="-1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hQA-GC-jcq">
+                                <rect key="frame" x="216" y="38" width="105" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-PI-2bW">
+                                <rect key="frame" x="191" y="40" width="21" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="RX" id="2u4-rZ-cSk">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator fixedFrame="YES" minValue="-1" maxValue="1" doubleValue="-1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="G9W-1Y-lrK">
+                                <rect key="frame" x="216" y="13" width="105" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ovZ-JL-Abj">
+                                <rect key="frame" x="191" y="15" width="21" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="RY" id="gK2-lV-fTC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-fT-tQ4">
+                    <rect key="frame" x="4" y="20" width="484" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Controller disconnected." id="6hW-JL-WSb">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="349" y="344"/>
+        </customView>
+    </objects>
+</document>

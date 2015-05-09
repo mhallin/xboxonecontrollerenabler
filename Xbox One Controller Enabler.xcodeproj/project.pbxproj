@@ -15,7 +15,6 @@
 		7916EB0718E771820064C241 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FB072A18E4DA8F0007BAD1 /* IOKit.framework */; };
 		7916EB0818E771850064C241 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FB06BC18E397C70007BAD1 /* Cocoa.framework */; };
 		79A6C75018E787C70050CD3A /* WirtualJoy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6C74F18E787C70050CD3A /* WirtualJoy.framework */; };
-		79A6C75118E787CD0050CD3A /* WirtualJoy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6C74F18E787C70050CD3A /* WirtualJoy.framework */; };
 		79BB00101A0DB5FD0088E155 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BB000E1A0DB52D0088E155 /* libusb-1.0.a */; };
 		79FB06C718E397C70007BAD1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79FB06C518E397C70007BAD1 /* InfoPlist.strings */; };
 		79FB06C918E397C70007BAD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FB06C818E397C70007BAD1 /* main.m */; };
@@ -26,6 +25,9 @@
 		79FB073C18E6252E0007BAD1 /* GAMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FB073A18E6252E0007BAD1 /* GAMainViewController.xib */; };
 		79FB073F18E62BAD0007BAD1 /* GAXboxControllerCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FB073E18E62BAD0007BAD1 /* GAXboxControllerCommunication.m */; };
 		79FB074318E63F380007BAD1 /* GAXboxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FB074218E63F380007BAD1 /* GAXboxController.m */; };
+		8A7807F41AFD4A610088BB25 /* WirtualJoy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7807F31AFD4A610088BB25 /* WirtualJoy.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A7807FD1AFD55240088BB25 /* GAXboxControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7807FB1AFD55240088BB25 /* GAXboxControllerViewController.m */; };
+		8A7807FE1AFD55240088BB25 /* GAXboxControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A7807FC1AFD55240088BB25 /* GAXboxControllerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +54,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				79A6C75118E787CD0050CD3A /* WirtualJoy.framework in Copy Frameworks */,
 				7916EB0618E771730064C241 /* VHID.framework in Copy Frameworks */,
+				8A7807F41AFD4A610088BB25 /* WirtualJoy.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,11 +86,15 @@
 		79FB073918E6252E0007BAD1 /* GAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAMainViewController.m; sourceTree = "<group>"; };
 		79FB073A18E6252E0007BAD1 /* GAMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GAMainViewController.xib; sourceTree = "<group>"; };
 		79FB073D18E62BAD0007BAD1 /* GAXboxControllerCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAXboxControllerCommunication.h; sourceTree = "<group>"; };
-		79FB073E18E62BAD0007BAD1 /* GAXboxControllerCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAXboxControllerCommunication.m; sourceTree = "<group>"; };
+		79FB073E18E62BAD0007BAD1 /* GAXboxControllerCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = GAXboxControllerCommunication.m; sourceTree = "<group>"; tabWidth = 2; };
 		79FB074018E62CFC0007BAD1 /* XboxOneButtonMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XboxOneButtonMap.h; sourceTree = "<group>"; };
 		79FB074118E63F380007BAD1 /* GAXboxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAXboxController.h; sourceTree = "<group>"; };
 		79FB074218E63F380007BAD1 /* GAXboxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAXboxController.m; sourceTree = "<group>"; };
 		79FB077118E66EDE0007BAD1 /* VHID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VHID.xcodeproj; path = VHID/VHID.xcodeproj; sourceTree = "<group>"; };
+		8A7807F31AFD4A610088BB25 /* WirtualJoy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = WirtualJoy.framework; path = "/Users/mhallin/Library/Developer/Xcode/DerivedData/Xbox_One_Controller_Enabler-bjexswhqdpmakaaimloibkhbrbyq/Build/Products/Debug/WirtualJoy.framework"; sourceTree = "<absolute>"; };
+		8A7807FA1AFD55240088BB25 /* GAXboxControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAXboxControllerViewController.h; sourceTree = "<group>"; };
+		8A7807FB1AFD55240088BB25 /* GAXboxControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAXboxControllerViewController.m; sourceTree = "<group>"; };
+		8A7807FC1AFD55240088BB25 /* GAXboxControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GAXboxControllerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,12 +116,15 @@
 		79FB06B018E397C70007BAD1 = {
 			isa = PBXGroup;
 			children = (
+				8A7807F31AFD4A610088BB25 /* WirtualJoy.framework */,
 				79FB077118E66EDE0007BAD1 /* VHID.xcodeproj */,
 				79FB06C218E397C70007BAD1 /* Xbox */,
 				79FB06BB18E397C70007BAD1 /* Frameworks */,
 				79FB06BA18E397C70007BAD1 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		79FB06BA18E397C70007BAD1 /* Products */ = {
 			isa = PBXGroup;
@@ -160,6 +169,9 @@
 				79FB074218E63F380007BAD1 /* GAXboxController.m */,
 				79FB073D18E62BAD0007BAD1 /* GAXboxControllerCommunication.h */,
 				79FB073E18E62BAD0007BAD1 /* GAXboxControllerCommunication.m */,
+				8A7807FA1AFD55240088BB25 /* GAXboxControllerViewController.h */,
+				8A7807FB1AFD55240088BB25 /* GAXboxControllerViewController.m */,
+				8A7807FC1AFD55240088BB25 /* GAXboxControllerViewController.xib */,
 				79FB06D118E397C70007BAD1 /* MainMenu.xib */,
 				79FB074018E62CFC0007BAD1 /* XboxOneButtonMap.h */,
 				79FB06D418E397C70007BAD1 /* Images.xcassets */,
@@ -272,6 +284,7 @@
 				7916EAF718E76BD80064C241 /* off.png in Resources */,
 				79FB06D518E397C70007BAD1 /* Images.xcassets in Resources */,
 				79FB06CD18E397C70007BAD1 /* Credits.rtf in Resources */,
+				8A7807FE1AFD55240088BB25 /* GAXboxControllerViewController.xib in Resources */,
 				7916EAF818E76BD80064C241 /* on.png in Resources */,
 				79FB073C18E6252E0007BAD1 /* GAMainViewController.xib in Resources */,
 			);
@@ -289,6 +302,7 @@
 				79FB074318E63F380007BAD1 /* GAXboxController.m in Sources */,
 				79FB06D018E397C70007BAD1 /* GAAppDelegate.m in Sources */,
 				79FB06C918E397C70007BAD1 /* main.m in Sources */,
+				8A7807FD1AFD55240088BB25 /* GAXboxControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "GAXboxControllerCommunication.h"
 #import <IOKit/IOKitLib.h>
 #import <IOKit/IOCFPlugIn.h>
+#import <IOKit/hid/IOHIDKeys.h>
 #import <IOKit/usb/IOUSBLib.h>
 #import <IOKit/usb/USBSpec.h>
 #import "XboxOneButtonMap.h"
@@ -30,6 +31,8 @@ static SInt32 idProduct = 0x02d1;
 @property (nonatomic) IOReturn returnCode;
 @property (nonatomic) XboxOneButtonMap buttonMap;
 @property (nonatomic) BOOL shouldPoll;
+@property (nonatomic) int controllerIndex;
+@property (nonatomic) NSOperationQueue *queue;
 
 @end
 
@@ -49,16 +52,67 @@ static SInt32 idProduct = 0x02d1;
 @synthesize returnCode;
 @synthesize buttonMap;
 @synthesize shouldPoll;
+@synthesize controllerIndex;
+@synthesize queue;
+
++ (int)numberOfConnectedControllers {
+  CFMutableDictionaryRef matchingDictionary = IOServiceMatching(kIOUSBDeviceClassName);
+  CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBVendorID), CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &idVendor));
+  CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBProductID), CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &idProduct));
+
+  io_iterator_t iterator;
+  IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDictionary, &iterator);
+
+  int count = 0;
+  while (IOIteratorNext(iterator)) ++count;
+
+  return count;
+}
 
 #pragma mark - Object Life Cycle
 
-- (id)init {
+- (instancetype)initWithControllerIndex:(int)index queue:(NSOperationQueue *)inQueue {
   self = [super init];
+  controllerIndex = index;
   matchingDictionary = NULL;
   iterator = 0;
   usbDevice = NULL;
   shouldPoll = NO;
+  queue = inQueue;
   return self;
+}
+
+#pragma mark - Properties
+
+- (NSString *)usbSerialNumber {
+  if (!usbDevice) {
+    return nil;
+  }
+
+  UInt8 serialNumberIndex = 0;
+
+  (*usbDevice)->USBGetSerialNumberStringIndex(usbDevice, &serialNumberIndex);
+
+  UInt16 wideBuffer[64];
+  UInt8 buffer[64];
+
+  IOUSBDevRequest request;
+  request.bmRequestType = USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+  request.bRequest = kUSBRqGetDescriptor;
+  request.wValue = (kUSBStringDesc << 8) | serialNumberIndex;
+  request.wIndex = 0x409;
+  request.wLength = sizeof(wideBuffer);
+  request.pData = wideBuffer;
+
+  if ((*usbDevice)->DeviceRequest(usbDevice, &request) != KERN_SUCCESS) {
+    return nil;
+  }
+
+  for (size_t i = 0; i < sizeof(buffer); ++i) {
+    buffer[i] = wideBuffer[i] & 0xff;
+  }
+
+  return [[NSString alloc] initWithBytes:buffer + 1 length:(request.wLenDone - 2) / 2 encoding:NSASCIIStringEncoding];
 }
 
 #pragma mark - Setup
@@ -68,10 +122,14 @@ static SInt32 idProduct = 0x02d1;
   matchingDictionary = IOServiceMatching(kIOUSBDeviceClassName);
   CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBVendorID), CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &idVendor));
   CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBProductID), CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &idProduct));
-  
+
   // Search for device
   IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDictionary, &iterator);
-  usbRef = IOIteratorNext(iterator);
+
+  for (int i = 0; i <= controllerIndex; ++i) {
+    usbRef = IOIteratorNext(iterator);
+  }
+
   IOObjectRelease(iterator);
   
   return usbRef > 0 ? 0 : -1;
@@ -149,7 +207,6 @@ static SInt32 idProduct = 0x02d1;
 - (void)startPollingController {
   if (!shouldPoll) {
     shouldPoll = YES;
-    [self performSelectorInBackground:@selector(poll) withObject:nil];
     [[[NSThread alloc] initWithTarget:self selector:@selector(poll) object:nil] start];
   }
 }
